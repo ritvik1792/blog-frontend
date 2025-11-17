@@ -1,0 +1,107 @@
+<!-- green-journal-hero.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" width="1200" height="420" role="img" aria-label="Green Journal homepage banner">
+  <defs>
+    <linearGradient id="skyG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E8F7FF"></stop>
+      <stop offset="1" stop-color="#F6FFF8"></stop>
+    </linearGradient>
+    <linearGradient id="leafG" x1="0" x2="1">
+      <stop offset="0" stop-color="#34C07A"></stop>
+      <stop offset="1" stop-color="#1190A0"></stop>
+    </linearGradient>
+    <linearGradient id="sunG" x1="0" x2="1">
+      <stop offset="0" stop-color="#FFD166"></stop>
+      <stop offset="1" stop-color="#FFB66B"></stop>
+    </linearGradient>
+    <style>
+      .hero-head { font: 700 42px/1.05 "Segoe UI", Roboto, Arial; fill: #0E3B3A; }
+      .hero-sub { font: 400 18px/1.4 "Segoe UI", Roboto, Arial; fill:#274A52; opacity:0.9; }
+      .btn-text { font:600 15px/1 "Segoe UI", Roboto, Arial; fill:#fff; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="420" fill="url(#skyG)"></rect>
+
+  <!-- sun -->
+  <g transform="translate(980,80)">
+    <circle cx="0" cy="0" r="54" fill="url(#sunG)" opacity="0.98"></circle>
+    <circle cx="0" cy="0" r="86" fill="url(#sunG)" opacity="0.12"></circle>
+  </g>
+
+  <!-- subtle clouds -->
+  <g fill="#FFFFFF" opacity="0.9">
+    <ellipse cx="180" cy="86" rx="84" ry="30"></ellipse>
+    <ellipse cx="260" cy="70" rx="54" ry="20"></ellipse>
+    <ellipse cx="360" cy="90" rx="68" ry="26"></ellipse>
+  </g>
+
+  <!-- left hero content block (text) -->
+  <g transform="translate(72,80)">
+    <foreignObject x="0" y="0" width="640" height="260">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Segoe UI', Roboto, Arial; color:#0E3B3A;">
+        <div style="max-width:640px;">
+          <div style="font-weight:700; font-size:42px; line-height:1.05; margin-bottom:12px;">Understand the climate. Drive real change.</div>
+          <div style="font-size:18px; line-height:1.45; color:#274A52; margin-bottom:20px;">
+            Deep-dive articles, science-backed explainers, and practical solutions — written by researchers, journalists, and community creators. Read, learn, and join a movement that cares.
+          </div>
+          <!-- buttons -->
+          <div style="display:flex; gap:12px; align-items:center;">
+            <svg width="160" height="46" viewBox="0 0 160 46" style="border-radius:10px;">
+              <defs>
+                <linearGradient id="cta1" x1="0" x2="1"><stop offset="0" stop-color="#2EA36F"></stop><stop offset="1" stop-color="#1190A0"></stop></linearGradient>
+              </defs>
+              <rect rx="10" width="160" height="46" fill="url(#cta1)"></rect>
+              <text x="80" y="30" class="btn-text" text-anchor="middle">Read Latest</text>
+            </svg>
+
+            <svg width="150" height="46" viewBox="0 0 150 46" style="border-radius:10px;">
+              <rect rx="10" width="150" height="46" fill="#FFFFFF" stroke="#D7F0E6" stroke-width="1.6"></rect>
+              <text x="75" y="30" fill="#1190A0" font-weight="600" font-size="15" text-anchor="middle">Write for us</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- right hero illustration: stylized journal + plant + globe -->
+  <g transform="translate(720,120)">
+    <!-- open journal -->
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" width="320" height="200" rx="12" fill="#FFFFFF" stroke="#DFF3EB" stroke-width="2.4"></rect>
+      <path d="M18 18 L18 182" stroke="#F1F8F5" stroke-width="3"></path>
+      <!-- left page lines -->
+      <g transform="translate(28,24)" fill="none" stroke="#E6F2ED" stroke-width="2">
+        <path d="M0 0 H240"></path>
+        <path d="M0 36 H240"></path>
+        <path d="M0 72 H240"></path>
+        <path d="M0 108 H240"></path>
+      </g>
+      <!-- bookmark / leaf -->
+      <g transform="translate(228,16)">
+        <path d="M12 0 C24 14 24 40 12 54 C0 40 0 14 12 0Z" fill="url(#leafG)"></path>
+        <rect x="10" y="56" width="14" height="16" rx="3" fill="#DFF8EE"></rect>
+      </g>
+    </g>
+
+    <!-- plant sprout on journal -->
+    <g transform="translate(72,36)">
+      <path d="M24 90 C30 64 50 60 56 40" stroke="#2EA36F" stroke-width="4" stroke-linecap="round" fill="none"></path>
+      <path d="M56 40 C48 34 40 30 32 36 C24 42 22 54 26 64 C30 74 42 82 56 82" fill="#34C07A" opacity="0.95"></path>
+      <path d="M34 40 C40 34 46 32 52 36" stroke="#0E6B4D" stroke-width="1.4" fill="none" opacity="0.6"></path>
+    </g>
+
+    <!-- small globe -->
+    <g transform="translate(12,110) scale(0.78)">
+      <circle cx="44" cy="32" r="28" fill="#E6FBF2" stroke="#BCEEDA" stroke-width="2"></circle>
+      <path d="M44 8 C56 12 64 26 60 40 C56 54 44 64 32 60 C20 56 12 42 16 28 C20 14 32 6 44 8Z" fill="#C8F7DF"></path>
+      <path d="M28 32 C35 28 53 28 56 32" stroke="#1B6A4E" stroke-width="1.6" stroke-linecap="round" fill="none"></path>
+    </g>
+  </g>
+
+  <!-- decorative bottom wave -->
+  <g transform="translate(0,340)">
+    <path d="M0 20 C150 -20 350 60 600 20 C850 -20 1050 60 1200 20 L1200 80 L0 80 Z" fill="#F6FFF8"></path>
+  </g>
+</svg>

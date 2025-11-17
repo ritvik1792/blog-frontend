@@ -1,0 +1,8 @@
+<!-- Climate Connect Icon Only -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img">
+  <!-- Linked circles -->
+  <circle cx="18" cy="24" r="10" fill="#2EA36F" opacity="0.95"></circle>
+  <circle cx="30" cy="24" r="10" fill="#1190A0" opacity="0.95"></circle>
+  <!-- Connection bar -->
+  <rect x="18" y="22" width="12" height="4" fill="#FFFFFF" opacity="0.9"></rect>
+</svg>

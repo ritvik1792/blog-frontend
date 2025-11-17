@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="360" viewBox="0 0 420 360">
+
+  <!-- SUN -->
+  <g transform="translate(300,40)">
+    <circle cx="0" cy="0" r="54" fill="#FFD166" opacity="0.98"></circle>
+    <circle cx="0" cy="0" r="86" fill="#FFD166" opacity="0.15"></circle>
+  </g>
+
+  <!-- JOURNAL -->
+  <g transform="translate(40,80)">
+    <rect x="0" y="0" width="320" height="200" rx="12" fill="#FFFFFF" stroke="#DFF3EB" stroke-width="2.4"></rect>
+    <path d="M18 18 L18 182" stroke="#F1F8F5" stroke-width="3"></path>
+    <g transform="translate(28,24)" fill="none" stroke="#E6F2ED" stroke-width="2">
+      <path d="M0 0 H240"></path>
+      <path d="M0 36 H240"></path>
+      <path d="M0 72 H240"></path>
+      <path d="M0 108 H240"></path>
+    </g>
+    <g transform="translate(228,16)">
+      <path d="M12 0 C24 14 24 40 12 54 C0 40 0 14 12 0Z" fill="#34C07A"></path>
+      <rect x="10" y="56" width="14" height="16" rx="3" fill="#DFF8EE"></rect>
+    </g>
+  </g>
+
+  <!-- SPROUT -->
+  <g transform="translate(110,116)">
+    <path d="M24 90 C30 64 50 60 56 40" stroke="#2EA36F" stroke-width="4" stroke-linecap="round" fill="none"></path>
+    <path d="M56 40 C48 34 40 30 32 36 C24 42 22 54 26 64 C30 74 42 82 56 82" fill="#34C07A" opacity="0.95"></path>
+    <path d="M34 40 C40 34 46 32 52 36" stroke="#0E6B4D" stroke-width="1.4" fill="none" opacity="0.6"></path>
+  </g>
+
+  <!-- SMALL GLOBE -->
+  <g transform="translate(80,270) scale(0.78)">
+    <circle cx="44" cy="32" r="28" fill="#E6FBF2" stroke="#BCEEDA" stroke-width="2"></circle>
+    <path d="M44 8 C56 12 64 26 60 40 C56 54 44 64 32 60 C20 56 12 42 16 28 C20 14 32 6 44 8Z" fill="#C8F7DF"></path>
+    <path d="M28 32 C35 28 53 28 56 32" stroke="#1B6A4E" stroke-width="1.6" stroke-linecap="round" fill="none"></path>
+  </g>
+
+</svg>
