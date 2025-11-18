@@ -138,8 +138,8 @@ const BecomeWriterPage = () => {
               Submit Application
             </button>
             <p className="text-sm font-semibold text-[#5a7184]">
-              Want to register as a reader?{" "}
-              <Link to="/register" className="text-primary">
+              Already member of climate connect?{" "}
+              <Link to="/register/writer" className="text-primary">
                 Register here
               </Link>
             </p>
