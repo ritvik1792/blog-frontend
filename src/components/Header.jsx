@@ -15,7 +15,7 @@ const navItemsInfo = [
     type: "dropdown",
     items: [
       { title: "About us", href: "/about" },
-      { title: "Contact us", href: "/contact" },
+      { title: "mission", href: "/mission" },
     ],
   },
   { name: "Pricing", type: "link", href: "/pricing" },
