@@ -6,6 +6,8 @@ import {
   deleteUser,
   getAllUsers,
   updateProfile,
+  verifyWriter,
+  disapprovedWriter,
 } from "../../../../services/index/users";
 import DataTable from "../../components/DataTable";
 import { images, stables } from "../../../../constants";
@@ -39,12 +41,21 @@ const Users = () => {
 
   const { mutate: mutateUpdateUser, isLoading: isLoadingUpdateUser } =
     useMutation({
-      mutationFn: ({ isAdmin, userId }) => {
-        return updateProfile({
-          token: userState.userInfo.token,
-          userData: { admin: isAdmin },
-          userId,
-        });
+      mutationFn: ({ isAdmin, approveWriter, disapproveWriter , userId }) => {
+        if(isAdmin)
+          return updateProfile({
+            token: userState.userInfo.token,
+            userData: { admin: isAdmin },
+            userId,
+          });
+        if(approveWriter)
+          return verifyWriter({
+            user: userState.userInfo,
+          });
+        if(disapproveWriter)
+          return disapprovedWriter({
+            user: userState.userInfo,
+          });
       },
       onSuccess: (data) => {
         queryClient.invalidateQueries(["users"]);
@@ -62,7 +73,18 @@ const Users = () => {
     if (
       window.confirm("Do you want to change the admin status of this user?")
     ) {
-      mutateUpdateUser({ isAdmin: event.target.checked, userId });
+      mutateUpdateUser({ isAdmin: event.target.checked, approveWriter: false , disapproveWriter: false , userId });
+    } else {
+      event.target.checked = initialCheckValue;
+    }
+  };
+  const handleWriterCheck = (event, userId) => {
+    const initialCheckValue = !event.target.checked;
+
+    if (
+      window.confirm("Do you want to change the writer status of this user?")
+    ) {
+      mutateUpdateUser({ isAdmin: false, approveWriter: event.target.checked, disapprovedWriter: !event.target.checked, userId });
     } else {
       event.target.checked = initialCheckValue;
     }
@@ -82,6 +104,7 @@ const Users = () => {
         "Created At",
         "is Verified",
         "is Admin",
+        "is Writer",
         "",
       ]}
       isLoading={isLoading}
@@ -137,6 +160,15 @@ const Users = () => {
               className="d-checkbox disabled:bg-orange-400 disabled:opacity-100 checked:bg-[url('../public/images/check.png')] bg-cover checked:disabled:bg-none"
               defaultChecked={user.admin}
               onChange={(event) => handleAdminCheck(event, user._id)}
+              disabled={isLoadingUpdateUser}
+            />
+          </td>
+          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+            <input
+              type="checkbox"
+              className="d-checkbox disabled:bg-orange-400 disabled:opacity-100 checked:bg-[url('../public/images/check.png')] bg-cover checked:disabled:bg-none"
+              defaultChecked={(user.writer && user.verified) || false}
+              onChange={(event) => handleWriterCheck(event, user._id)}
               disabled={isLoadingUpdateUser}
             />
           </td>

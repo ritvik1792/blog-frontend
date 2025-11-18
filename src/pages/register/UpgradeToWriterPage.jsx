@@ -27,15 +27,14 @@ const UpgradeToWriterPage = () => {
     });
 
     const { mutate, isLoading } = useMutation({
-        mutationFn: (formData) => {
-            return upgradeToWriter({ userId: userState.userInfo._id, writer: true, ...formData });
+        mutationFn: () => {
+            return upgradeToWriter({ user: userState.userInfo });
         },
-        onSuccess: (data) => {
-            toast.success("You are now a writer!");
-            // Update user info in redux/localStorage
-            const updated = { ...userState.userInfo, writer: true, ...(data || {}) };
-            dispatch(userActions.setUserInfo(updated));
-            localStorage.setItem("account", JSON.stringify(updated));
+        onSuccess: () => {
+            toast.success("Your Request to become writer is successfully submited!");
+            dispatch({ type: "USER_SET_INFO", payload: { ...userState.userInfo, writer: true } });
+            localStorage.setItem("account", JSON.stringify({ ...userState.userInfo, writer: true }));
+
             navigate("/");
         },
         onError: (error) => {
