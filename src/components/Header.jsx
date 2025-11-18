@@ -12,7 +12,7 @@ const navItemsInfo = [
   { name: "Blog", type: "link", href: "/blog" },
   { name: "About Us", type: "link", href: "/about" },
   { name: "Our Mission", type: "link", href: "/mission" },
-  { name: "Join Us", type: "link", href: "/register/writer" },
+  { name: "Join Us", type: "link", href: "/upgrade/writer" },
 ];
 
 const NavItem = ({ item }) => {

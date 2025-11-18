@@ -16,7 +16,6 @@ import Categories from "./pages/admin/screens/categories/Categories";
 import EditCategories from "./pages/admin/screens/categories/EditCategories";
 import Users from "./pages/admin/screens/users/Users";
 import BlogPage from "./pages/blog/BlogPage";
-import BecomeWriterPage from "./pages/register/BecomeWriterPage";
 import UpgradeToWriterPage from "./pages/register/UpgradeToWriterPage";
 import AboutPage from "./pages/about/AboutPage";
 import MissionPage from "./pages/about/MissionPage";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<ArticleDetailPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/register/writer" element={<BecomeWriterPage />} />
         <Route path ="/upgrade/writer" element={<UpgradeToWriterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutPage />} />

@@ -14,21 +14,6 @@ export const signup = async ({ name, email, password }) => {
     throw new Error(error.message);
   }
 };
-export const signupAsWriter = async ({ name, email, password, writer }) => {
-  try {
-    const { data } = await axios.post("/api/users/register", {
-      name,
-      email,
-      password,
-      writer
-    });
-    return data;
-  } catch (error) {
-    if (error.response && error.response.data.message)
-      throw new Error(error.response.data.message);
-    throw new Error(error.message);
-  }
-};
 
 export const upgradeToWriter = async ({ user }) => {
   try {
