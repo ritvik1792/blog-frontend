@@ -19,6 +19,10 @@ import BlogPage from "./pages/blog/BlogPage";
 import UpgradeToWriterPage from "./pages/register/UpgradeToWriterPage";
 import AboutPage from "./pages/about/AboutPage";
 import MissionPage from "./pages/about/MissionPage";
+import WriterLayout from "./pages/writer/WriterLayout";
+import Writer from "./pages/writer/screens/Writer";
+import ManageWriterPosts from "./pages/writer/screens/ManagePosts";
+import EditWriterPost from "./pages/writer/screens/EditPost";
 
 function App() {
   return (
@@ -43,7 +47,12 @@ function App() {
             path="categories/manage/edit/:slug"
             element={<EditCategories />}
           />
-          <Route path="users/manage" element={<Users />} />
+          <Route path="users/manage" element={<Users />}/>
+        </Route>
+        <Route path="/writer" element={<WriterLayout /> }>
+          <Route index element={<Writer />} />
+          <Route path="posts/manage" element={<ManageWriterPosts />} />
+          <Route path="posts/manage/edit/:slug" element={<EditWriterPost />} />
         </Route>
       </Routes>
       <Toaster />

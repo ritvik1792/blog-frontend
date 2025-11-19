@@ -15,7 +15,7 @@ const UpgradeToWriterPage = () => {
     const dispatch = useDispatch();
     const userState = useSelector((state) => state.user);
 
-    const isEligible = userState.userInfo && !userState.userInfo.writer;
+    const isEligible = userState.userInfo && !userState?.userInfo?.writer;
 
     const { register, handleSubmit, formState: { errors, isValid } } = useForm({
         defaultValues: {
@@ -100,12 +100,6 @@ const UpgradeToWriterPage = () => {
                                 >
                                     Become a Writer
                                 </button>
-                                <p className="text-sm font-semibold text-[#5a7184]">
-                                    Not registered to climate connect?{" "}
-                                    <Link to="/register" className="text-primary">
-                                        Register here
-                                    </Link>
-                                </p>
                             </form>
                         </>
                     ) : (
