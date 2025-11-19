@@ -15,6 +15,44 @@ export const signup = async ({ name, email, password }) => {
   }
 };
 
+export const upgradeToWriter = async ({ user }) => {
+  try {
+    const { data } = await axios.post("/api/users/becomeWriter", {
+      user
+    });
+    return data;
+  } catch (error) {
+    if (error.response && error.response.data.message)
+      throw new Error(error.response.data.message);
+    throw new Error(error.message);
+  }
+};
+
+export const verifyWriter = async ({ user }) => {
+  try {
+    const { data } = await axios.post("/api/users/verifyWriter", {
+      user
+    });
+    return data;
+  } catch (error) {
+    if (error.response && error.response.data.message)
+      throw new Error(error.response.data.message);
+    throw new Error(error.message);
+  }
+}
+export const disapprovedWriter = async ({ user }) => {
+  try {
+    const { data } = await axios.post("/api/users/disapprovedWriter", {
+      user
+    });
+    return data;
+  } catch (error) {
+    if (error.response && error.response.data.message)
+      throw new Error(error.response.data.message);
+    throw new Error(error.message);
+  }
+}
+
 export const login = async ({ email, password }) => {
   try {
     const { data } = await axios.post("/api/users/login", {

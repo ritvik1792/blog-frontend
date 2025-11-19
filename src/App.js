@@ -16,6 +16,9 @@ import Categories from "./pages/admin/screens/categories/Categories";
 import EditCategories from "./pages/admin/screens/categories/EditCategories";
 import Users from "./pages/admin/screens/users/Users";
 import BlogPage from "./pages/blog/BlogPage";
+import UpgradeToWriterPage from "./pages/register/UpgradeToWriterPage";
+import AboutPage from "./pages/about/AboutPage";
+import MissionPage from "./pages/about/MissionPage";
 
 function App() {
   return (
@@ -25,7 +28,10 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<ArticleDetailPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path ="/upgrade/writer" element={<UpgradeToWriterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/mission" element={<MissionPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
