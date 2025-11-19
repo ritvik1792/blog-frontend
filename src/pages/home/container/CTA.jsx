@@ -1,6 +1,7 @@
 import React from "react";
 
 import { images } from "../../../constants";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -25,17 +26,14 @@ const CTA = () => {
         <div className="container grid grid-cols-12 mx-auto py-10 md:pb-20 lg:place-items-center">
           <div className="col-span-12 lg:col-span-6">
             <h2 className="text-white font-roboto font-bold text-2xl md:text-4xl md:text-center md:leading-normal lg:text-left">
-              Get our stories delivered From us to your inbox weekly.
+              Become a contributor today!
             </h2>
             <div className="w-full max-w-[494px] mt-12 space-y-3 mx-auto md:space-y-0 md:flex md:items-center md:space-x-2 lg:mx-0">
-              <input
-                type="text"
-                className="px-4 py-3 rounded-lg w-full placeholder:text-dark-light"
-                placeholder="Your Email"
-              />
-              <button className="px-4 py-3 rounded-lg w-full bg-primary text-white font-bold md:w-fit md:whitespace-nowrap">
-                Get started
-              </button>
+              <Link to="/upgrade/writer">
+                <button className="px-4 py-3 rounded-lg w-full bg-primary text-white font-bold md:w-fit md:whitespace-nowrap">
+                  Get started
+                </button>
+              </Link>
             </div>
             <p className="text-dark-light text-sm leading-7 mt-6 md:text-center md:text-base lg:text-left">
               <span className="font-bold italic text-[#B3BAC5] md:not-italic md:font-normal md:text-dark-light">
