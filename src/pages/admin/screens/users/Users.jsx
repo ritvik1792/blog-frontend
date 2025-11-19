@@ -6,13 +6,14 @@ import {
   deleteUser,
   getAllUsers,
   updateProfile,
-  verifyWriter,
-  disapprovedWriter,
+  updateWriterStatus,
 } from "../../../../services/index/users";
 import DataTable from "../../components/DataTable";
 import { images, stables } from "../../../../constants";
+import { useDispatch, useSelector } from "react-redux";
 
 const Users = () => {
+  const dispatch = useDispatch();
   const {
     userState,
     currentPage,
@@ -41,25 +42,47 @@ const Users = () => {
 
   const { mutate: mutateUpdateUser, isLoading: isLoadingUpdateUser } =
     useMutation({
-      mutationFn: ({ isAdmin, approveWriter, disapproveWriter , userId }) => {
+      mutationFn: ({ isAdmin, userId }) => {
         if(isAdmin)
           return updateProfile({
             token: userState.userInfo.token,
             userData: { admin: isAdmin },
             userId,
           });
-        if(approveWriter)
-          return verifyWriter({
-            user: userState.userInfo,
-          });
-        if(disapproveWriter)
-          return disapprovedWriter({
-            user: userState.userInfo,
-          });
       },
       onSuccess: (data) => {
         queryClient.invalidateQueries(["users"]);
         toast.success("User is updated");
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        console.log(error);
+      },
+    });
+
+  const {
+      mutate: mutateUpdateWriterCheck,
+      isLoading: isLoadingUpdateWriterCheck,
+    } = useMutation({
+      mutationFn: ({ user, writer }) => {
+        return updateWriterStatus({ user, writer });
+      },
+      onSuccess: (data, variables) => {
+        queryClient.invalidateQueries(["users"]);
+
+        if (variables.userId === userState.userInfo?._id) {
+          const updated = {
+            ...userState.userInfo,
+            writer: variables.writer,
+            verifiedWriter: data?.verifiedWriter ?? variables.writer,
+          };
+          dispatch({ type: "USER_SET_INFO", payload: updated });
+          localStorage.setItem("account", JSON.stringify(updated));
+        }
+
+        toast.success(
+          data?.verifiedWriter ? "Writer approved Successfully" : "Writer Disapproved Successfully"
+        );
       },
       onError: (error) => {
         toast.error(error.message);
@@ -74,17 +97,6 @@ const Users = () => {
       window.confirm("Do you want to change the admin status of this user?")
     ) {
       mutateUpdateUser({ isAdmin: event.target.checked, approveWriter: false , disapproveWriter: false , userId });
-    } else {
-      event.target.checked = initialCheckValue;
-    }
-  };
-  const handleWriterCheck = (event, userId) => {
-    const initialCheckValue = !event.target.checked;
-
-    if (
-      window.confirm("Do you want to change the writer status of this user?")
-    ) {
-      mutateUpdateUser({ isAdmin: false, approveWriter: event.target.checked, disapprovedWriter: !event.target.checked, userId });
     } else {
       event.target.checked = initialCheckValue;
     }
@@ -163,15 +175,31 @@ const Users = () => {
               disabled={isLoadingUpdateUser}
             />
           </td>
-          <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-            <input
-              type="checkbox"
-              className="d-checkbox disabled:bg-orange-400 disabled:opacity-100 checked:bg-[url('../public/images/check.png')] bg-cover checked:disabled:bg-none"
-              defaultChecked={(user.writer && user.verified) || false}
-              onChange={(event) => handleWriterCheck(event, user._id)}
-              disabled={isLoadingUpdateUser}
-            />
-          </td>
+          {user.writer  && user.writer===true ? (
+              <button
+                disabled={isLoadingDeleteData}
+                type="button"
+                className={`${
+                  user?.verifiedWriter
+                    ? "text-yellow-600 hover:text-yellow-900"
+                    : "text-green-600 hover:text-green-900"
+                } disabled:opacity-70 disabled:cursor-not-allowed`}
+                onClick={() => {
+                  mutateUpdateWriterCheck({
+                    user: user, 
+                    writer: user?.verifiedWriter ? false : true,
+                  });
+                }}
+              >
+                {user?.verifiedWriter ? "Unapprove" : "Approve"}
+              </button>
+            ) : (
+              <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                <p className="text-gray-900 whitespace-no-wrap">❌</p>
+              </td>
+            )
+          }
+
           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 space-x-5">
             <button
               disabled={isLoadingDeleteData}

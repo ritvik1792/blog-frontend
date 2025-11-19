@@ -28,10 +28,11 @@ export const upgradeToWriter = async ({ user }) => {
   }
 };
 
-export const verifyWriter = async ({ user }) => {
+export const updateWriterStatus = async ({ user, writer }) => {
   try {
-    const { data } = await axios.post("/api/users/verifyWriter", {
-      user
+    const { data } = await axios.post("/api/users/updateWriter", {
+      user, 
+      writer
     });
     return data;
   } catch (error) {
@@ -39,19 +40,7 @@ export const verifyWriter = async ({ user }) => {
       throw new Error(error.response.data.message);
     throw new Error(error.message);
   }
-}
-export const disapprovedWriter = async ({ user }) => {
-  try {
-    const { data } = await axios.post("/api/users/disapprovedWriter", {
-      user
-    });
-    return data;
-  } catch (error) {
-    if (error.response && error.response.data.message)
-      throw new Error(error.response.data.message);
-    throw new Error(error.message);
-  }
-}
+};
 
 export const login = async ({ email, password }) => {
   try {

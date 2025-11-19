@@ -1,8 +1,8 @@
-import { images, stables } from "../../../../constants";
-import { deletePost, getAllPosts } from "../../../../services/index/posts";
+import { images, stables } from "../../../constants";
+import { deletePost, getAllPostOfUser } from "../../../services/index/posts";
 import { Link } from "react-router-dom";
-import { useDataTable } from "../../../../hooks/useDataTable";
-import DataTable from "../../components/DataTable";
+import { useDataTable } from "../../../hooks/useDataTable";
+import DataTable from "../../admin/components/DataTable";
 
 const ManagePosts = () => {
   const {
@@ -19,7 +19,7 @@ const ManagePosts = () => {
     deleteDataHandler,
     setCurrentPage,
   } = useDataTable({
-    dataQueryFn: () => getAllPosts(searchKeyword, currentPage),
+    dataQueryFn: () => getAllPostOfUser(userState?.userInfo?._id),
     dataQueryKey: "posts",
     deleteDataMessage: "Post is deleted",
     mutateDeleteFn: ({ slug, token }) => {
@@ -41,13 +41,13 @@ const ManagePosts = () => {
       tableHeaderTitleList={["Title", "Category", "Created At", "Tags", ""]}
       isLoading={isLoading}
       isFetching={isFetching}
-      data={postsData?.data}
+      data={postsData}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
       headers={postsData?.headers}
       userState={userState}
     >
-      {postsData?.data.map((post) => (
+      {postsData?.map((post) => (
         <tr>
           <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
             <div className="flex items-center">
@@ -121,7 +121,7 @@ const ManagePosts = () => {
               Delete
             </button>
             <Link
-              to={`/admin/posts/manage/edit/${post?.slug}`}
+              to={`/writer/posts/manage/edit/${post?.slug}`}
               className="text-green-600 hover:text-green-900"
             >
               Edit
